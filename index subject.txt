@@ -10,6 +10,11 @@ config = 3
 config_b.items = item1
 config_b.items = item2
 config_b.items.named_item = 123
+config_b.items.items2 = 123
+config_b.items.items2 = 456
+config_b.items.a.b.c = 456
+config_b.items.a.b.c = 456
+config_b.items.a.b.c = 456
 config_c.root.a.b.c = 13
 ```
 

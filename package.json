@@ -1,0 +1,22 @@
+{
+  "name": "qmarquez.portfolio.05.codecaretechinterview",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --detectOpenHandles"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qmarquez/qmarquez.portfolio.05.codeCareTechInterview.git"
+  },
+  "author": "qmarquez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qmarquez/qmarquez.portfolio.05.codeCareTechInterview/issues"
+  },
+  "homepage": "https://github.com/qmarquez/qmarquez.portfolio.05.codeCareTechInterview#readme",
+  "devDependencies": {
+    "jest": "^27.0.6"
+  }
+}
