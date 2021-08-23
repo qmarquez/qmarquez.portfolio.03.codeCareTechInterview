@@ -1,6 +1,6 @@
 const jsonResult = {};
-const readline = require('readline');
-const rl = readline.createInterface({
+const { createInterface } = require('readline');
+const rl = createInterface({
   input: process.stdin,
   output: process.stdout
 });
@@ -16,23 +16,31 @@ function processLine(line) {
 function processAccesors(baseObject, accesors, value) {
   const [rootAccesor, ...othersAccesors] = accesors;
 
-  if (baseObject[rootAccesor] && typeof baseObject[rootAccesor] !== 'object') {
-    const auxValue = baseObject[rootAccesor];
-    baseObject[rootAccesor] = {};
-    if (!othersAccesors) {
-      // do number ascending stuff
+  if (baseObject[rootAccesor]) {
+    if (typeof baseObject[rootAccesor] !== 'object') {
+      const auxValue = baseObject[rootAccesor];
+      baseObject[rootAccesor] = {};
+      baseObject[rootAccesor][0] = auxValue;
+    }
+
+    if (!othersAccesors.length) {
+      let auxAccesor = 0
+      while (baseObject[rootAccesor][auxAccesor]) {
+        auxAccesor++;
+      }
+      baseObject[rootAccesor][auxAccesor] = value;
     } else {
       processAccesors(baseObject[rootAccesor], othersAccesors, value);
     }
-  }
-
-  if (!othersAccesors.length) {
-    baseObject[rootAccesor] = isNaN(value) ? value : Number(value);
   } else {
-    if (!baseObject[rootAccesor]) {
-      baseObject[rootAccesor] = {};
+    if (!othersAccesors.length) {
+      baseObject[rootAccesor] = isNaN(value) ? value : Number(value);
+    } else {
+      if (!baseObject[rootAccesor]) {
+        baseObject[rootAccesor] = {};
+      }
+      processAccesors(baseObject[rootAccesor], othersAccesors, value);
     }
-    processAccesors(baseObject[rootAccesor], othersAccesors, value);
   }
 }
 
